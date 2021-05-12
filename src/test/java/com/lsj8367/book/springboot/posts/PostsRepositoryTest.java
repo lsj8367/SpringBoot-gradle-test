@@ -1,6 +1,5 @@
 package com.lsj8367.book.springboot.posts;
 
-import org.assertj.core.api.Assertions;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
