@@ -1,7 +1,7 @@
 package com.lsj8367.book.springboot.service.posts;
 
-import com.lsj8367.book.springboot.posts.Posts;
-import com.lsj8367.book.springboot.posts.PostsRepository;
+import com.lsj8367.book.springboot.domain.posts.Posts;
+import com.lsj8367.book.springboot.domain.posts.PostsRepository;
 import com.lsj8367.book.springboot.web.dto.PostsResponseDto;
 import com.lsj8367.book.springboot.web.dto.PostsSaveRequestDto;
 import com.lsj8367.book.springboot.web.dto.PostsUpdateRequestDto;

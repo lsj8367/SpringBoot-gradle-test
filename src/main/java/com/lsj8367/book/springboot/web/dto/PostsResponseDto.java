@@ -1,6 +1,6 @@
 package com.lsj8367.book.springboot.web.dto;
 
-import com.lsj8367.book.springboot.posts.Posts;
+import com.lsj8367.book.springboot.domain.posts.Posts;
 import lombok.Getter;
 
 @Getter
