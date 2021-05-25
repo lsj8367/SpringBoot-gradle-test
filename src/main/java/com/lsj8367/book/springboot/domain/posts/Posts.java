@@ -1,5 +1,6 @@
-package com.lsj8367.book.springboot.posts;
+package com.lsj8367.book.springboot.domain.posts;
 
+import com.lsj8367.book.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity // 실제 DB테이블과 매칭되는 클래스
 // 기본값으로 클래스의 camelCase 이름을 스네이크케이스 테이블과 매칭시켜준다.
-public class Posts {
+public class Posts extends BaseTimeEntity {
     @Id // 해당 테이블의 PK임을 명시
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Identity 옵션을 넣어야 auto_increment 설정 가능
     private Long id;
@@ -36,6 +37,4 @@ public class Posts {
         this.title = title;
         this.content = content;
     }
-
-
 }
