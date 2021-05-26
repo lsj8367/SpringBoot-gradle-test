@@ -61,4 +61,14 @@ public class PostsService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
+    public void delete(Long id){
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id = " + id));
+
+        postsRepository.delete(posts); //JPARepository 기본 제공 delete 메소드
+        //엔티티를 파라미터로 하여 삭제할 수도 있고 deleteById로 특정 id로도 삭제할 수 있다.
+        //존재하는 Posts인지 확인을 하고 있으면 조회 후 그대로 삭제한다.
+    }
+
 }
