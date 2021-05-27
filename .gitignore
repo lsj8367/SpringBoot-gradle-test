@@ -28,3 +28,5 @@ nbdist/
 .nb-gradle/
 
 out/*
+### 보안관련 oauth ###
+application-oauth.properties
