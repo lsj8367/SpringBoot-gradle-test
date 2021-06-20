@@ -1,5 +1,6 @@
 package com.lsj8367.book.springboot.web;
 
+import com.lsj8367.book.springboot.config.auth.LoginUser;
 import com.lsj8367.book.springboot.config.auth.dto.SessionUser;
 import com.lsj8367.book.springboot.service.posts.PostsService;
 import com.lsj8367.book.springboot.web.dto.PostsResponseDto;
@@ -19,11 +20,10 @@ public class IndexController {
     private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){ //어느 컨트롤러든지 @LoginUser만 사용하면 세션 정보를 가져올 수 있음.
         model.addAttribute("posts", postsService.findAllDesc()); //index.mustache의 {{#posts}}의 posts에 해당하는 데이터
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
         // CustomOAuth2User Service에서 user 세션을 생성해서 불렀다
-
+        // @LoginUser를 통해서 세션을 가져옴
         if(user != null){
             model.addAttribute("userName", user.getName());
         }
