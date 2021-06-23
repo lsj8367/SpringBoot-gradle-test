@@ -13,7 +13,9 @@
                     <!-- 스프링 시큐리티에서 제공하는 기본 로그아웃 URL -->
                 {{/userName}}
                 {{^userName}} <!-- 머스테치에서 해당 값이 존재하지 않는 경우 ^ 사용 userName없으면 로그인 버튼 노출 -->
-                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">구글로 로그인</a>
+                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">구글 로그인</a>
+                    <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">네이버 로그인</a>
+                    <!-- 네이버 로그인 url은 application-oauth.properties에 등록한 redirect-uri값에 맞춰 자동등록 -->
                     <!-- 스프링 시큐리티에서 기본으로 제공하는 로그인 :: 별도의 컨트롤러 생성할 필요가 없다 -->
                 {{/userName}}
             </div>
