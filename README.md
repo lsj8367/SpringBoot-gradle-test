@@ -4,7 +4,9 @@
 
 책에서 본 내용들을 토대로 게시판 구현
 
-사용기술 - SpringBoot, JPA, MariaDB, Junit5, AWS EC2, AWS RDS, ThymeLeaf, H2, Oauth2, Spring Security
+## 사용기술 
+  - SpringBoot, JPA, MariaDB, Junit5, AWS(EC2, RDS, S3, CodeDeploy, IAM)
+  - ThymeLeaf, H2, Oauth2, Spring Security
 
 ## API 명세
 ### 게시판
@@ -23,4 +25,7 @@ Spring Security 사용 Oauth 인증을 통한 Google, Naver 로그인
 
 권한이 있는 유저만 글 작성 가능
 
-추후 Jenkins를 통한 자동화 배포 구현 예정
+## TRAVIS CI
+S3, CodeDeploy, IAM 사용하여 깃허브 push로 자동 빌드 구현
+### CI/CD 자동화 배포 기능 구현
+
