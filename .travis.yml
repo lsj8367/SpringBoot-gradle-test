@@ -2,7 +2,6 @@ language: java
 jdk:
   - openjdk8
 
-#webhook 설정해야함
 branches:
   only:
     - master
@@ -30,6 +29,20 @@ deploy:
     acl: private # zip 파일접근 권한 private
     local_dir: deploy # before_deploy에서 생성한 디렉토리
     wait-until-deployed: true
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY # Travis repo settings 설정값
+    secret_access_key: $AWS_SECRET_KEY # 위와 동일한 설정안의 값
+    bucket: lsj8367-springboot2-build #s3 버킷
+    key: SpringBoot-gradle-test.zip #빌드 파일 압축해서 전달
+
+    bundle_type: zip #압축 확장자
+    application: springboot2-webservice # codedeploy 애플리케이션
+    deployment_group: springboot2-webservice-group # codedeploy 배포그룹
+    region: ap-northeast-2
+    wait-until-deployed: true
+
+
 
 # CI 실행 완료 시 메일로 알람
 notifications:
