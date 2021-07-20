@@ -1,14 +1,13 @@
 package com.lsj8367.book.springboot.domain;
 
 import lombok.Getter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Getter
 @MappedSuperclass // JPA Entity 클래스들이 BaseTimeEntity를 상속할 경우 필드들도 칼럼으로 인식하도록 한다.
@@ -16,23 +15,9 @@ import java.time.format.DateTimeFormatter;
 public abstract class BaseTimeEntity {
     //모든 Entity의 상위 클래스가 되어 Entity들의 createDate, modifiedDate를 자동으로 관리하는 역할을 하는 클래스
 
-//    @CreatedDate //Entity가 생성되어 저장될때 시간이 자동 저장됨
-//    private LocalDateTime createdDate;
+    @CreatedDate //Entity가 생성되어 저장될때 시간이 자동 저장됨
+    private LocalDateTime createdDate;
 
-    private String createDate;
-    private String modifiedDate;
-
-//    @LastModifiedDate //조회한Entity가 값을 변경할 때 시간이 자동 저장된다.
-//    private LocalDateTime modifiedDate;
-
-    @PrePersist
-    void onPrePersist() {
-        this.createDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd HH:mm:ss"));
-        this.modifiedDate = createDate;
-    }
-
-    @PreUpdate
-    void onPreUpdate() {
-        this.modifiedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd HH:mm:ss"));
-    }
+    @LastModifiedDate //조회한Entity가 값을 변경할 때 시간이 자동 저장된다.
+    private LocalDateTime modifiedDate;
 }
